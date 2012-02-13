@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[mattpf]]></title>
+  <link href="http://mattpf.github.com/atom.xml" rel="self"/>
+  <link href="http://mattpf.github.com/"/>
+  <updated>2012-02-13T17:38:24-05:00</updated>
+  <id>http://mattpf.github.com/</id>
+  <author>
+    <name><![CDATA[Matthew Powers-Freeling]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello, world!]]></title>
+    <link href="http://mattpf.github.com/blog/2012/02/13/hello-world/"/>
+    <updated>2012-02-13T17:26:00-05:00</updated>
+    <id>http://mattpf.github.com/blog/2012/02/13/hello-world</id>
+    <content type="html"><![CDATA[<p>I decided it would probably be worth having some <em>actual content</em> up on this domain, so here is a blog!
+It&#8217;s not a terribly exciting blog, but it is a blog none-the-less.</p>
+
+<p>Perhaps I will actually post something someday, if only because having Things On The Internet is
+frequently wise.</p>
+]]></content>
+  </entry>
+  
+</feed>
