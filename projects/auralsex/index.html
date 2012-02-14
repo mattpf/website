@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>auralsex - mattpf</title>
+  <meta name="author" content="Matthew Powers-Freeling">
+
+  
+  <meta name="description" content="Auralsex Auralsex was developed in 2010 as a multi-zone audio system for Beast.
+It was written as the successor to the Aural Sex system developed &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mattpf.net/projects/auralsex">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="mattpf" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">mattpf</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mattpf.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Auralsex</h1>
+    
+  </header>
+  
+  <p><img class="center" src="/projects/auralsex/hero.png" title="center" >
+Auralsex was developed in 2010 as a multi-zone audio system for <a href="http://mit.edu/beast/www/">Beast</a>.
+It was written as the successor to the Aural Sex system developed four years prior, but <em>torn
+out of the ceiling</em> by cleaning ladies. If you happen to live on Beast, you can access it
+<a href="https://auralsex.mit.edu/">here</a>.</p>
+
+<p>Auralsex was a collaboration between <strong>atw</strong>, <strong>cjfman</strong>, <strong>tshen2</strong> and myself. I was primarily
+involved in writing software; everyone else devised hardware for the software to actually
+run on.</p>
+
+<p>Auralsex is split into server and client systems, as follows:</p>
+
+<h2>The Server</h2>
+
+<p>The server runs on machines hooked up to the output speakers. It is a very simple python wrapper
+around <a href="http://www.mplayerhq.hu/">mplayer</a>, providing an HTTP interface to control music output, volume, etc. The webserver
+is based on Python&#8217;s <a href="http://docs.python.org/library/basehttpserver">BaseHTTPServer</a>.</p>
+
+<p>The source is available <a href="https://github.com/mattpf/auralsex-server">on Github</a>.</p>
+
+<h2>The Client</h2>
+
+<p>The client is a web app based on <a href="http://www.sencha.com/products/extjs/">ExtJS</a>, using a <a href="http://cherrypy.org/">cherrypy</a> backend. UI features include:</p>
+
+<ul>
+<li>Control of any auralsex zone</li>
+<li>A searchable listing of all available music</li>
+<li>Personal playlists for each user</li>
+<li>Full queue manipulation – addition, removal, reordering, etc. – by drag-and-drop</li>
+<li>Provides previews of music through your web browser using HTML5 <code>&lt;audio&gt;</code>.</li>
+<li>Integrated with <a href="http://ist.mit.edu/services/athena">Athena</a>:
+
+<ul>
+<li>Uses moira lists and MIT client certificates for authentication</li>
+<li>Zephyrs queue change information to <code>-c auralsex</code></li>
+</ul>
+</li>
+</ul>
+
+
+<p>As run in production, auralsex-client is run via fcgi behind <a href="http://www.lighttpd.net/">lighttpd</a>, which also handles
+certificate authentication.</p>
+
+<p>The source is available <a href="https://github.com/mattpf/auralsex-client">on Github</a>.</p>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mattpf.net/projects/auralsex/index.html" data-via="matthewpf" data-counturl="http://mattpf.net/projects/auralsex/index.html" >Tweet</a>
+  
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/13/hello-world/">Hello, world!</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("matthewpf", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/matthewpf" class="twitter-follow-button" data-show-count="false">Follow @matthewpf</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Matthew Powers-Freeling -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mattpf';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mattpf.net/projects/auralsex/index.html';
+        var disqus_url = 'http://mattpf.net/projects/auralsex/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

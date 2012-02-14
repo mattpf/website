@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Project Z - mattpf</title>
+  <meta name="author" content="Matthew Powers-Freeling">
+
+  
+  <meta name="description" content="Project Z Project Z is a Java-based implementation of Infocom&#8217;s Z-Machine (specifically, version 3).
+It implements – more or less – version 1. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mattpf.net/projects/projectz">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="mattpf" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">mattpf</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mattpf.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Project Z</h1>
+    
+  </header>
+  
+  <p><img class="center" src="/projects/projectz/hero.png" title="There is a small mailbox here." ></p>
+
+<p><strong>Project Z</strong> is a Java-based implementation of <a href="http://en.wikipedia.org/wiki/Infocom">Infocom</a>&#8217;s Z-Machine (specifically, version 3).
+It implements – more or less – version 1.0 of the <a href="http://www.inform-fiction.org/zmachine/standards/z1point0/index.html">Z-Machine Standard</a>, as well as the <a href="http://www.inform-fiction.org/zmachine/standards/quetzal/index.html">Quetzal</a>
+save format.</p>
+
+<p>The source code for Project Z can be found <a href="http://github.com/mattpf/projectz">on GitHub</a>. It also
+depends on an additional project, <strong><a href="https://github.com/mattpf/java-iff">java-iff</a></strong>, which I wrote because I found no simple
+implementations of the IFF format for Java. <strong>java-iff</strong>&#8217;s API (though not code) is based on
+Python&#8217;s <a href="http://docs.python.org/library/chunk">chunk</a> module, with adjustments to allow for Java&#8217;s strict typing.</p>
+
+<p><img class="right" src="/projects/projectz/cli.png" title="An alternative UI" ></p>
+
+<p>The actual Z-Machine implementation (in the <code>zmachine</code> package) is split from the user interface
+(in the <code>projectz</code> package), allowing for alternative user interfaces, as shown here.</p>
+
+<p>Why write a Z-Machine? I was intrigued by the binary mess that was ZORK long ago, and one day decided
+to figure out what it all meant.</p>
+
+<p>I made a presentation on it, too; <a href="/projects/projectz/slides/">here are the slides</a>. It also discusses
+the virtues of assembly over machine code, in case you were curious.</p>
+
+<h2>pyzasm</h2>
+
+<p>But wait, there&#8217;s more! While working on this Project Z, I also wanted to provide input to the machine!
+Since string and instruction coding by hand is tedious, I wrote <strong><a href="https://github.com/mattpf/pyzasm">pyzasm</a></strong>, a simple assembler for
+the Z-Machine. <strong>pyzasm</strong> is ridiculously trivial, and doesn&#8217;t support several vital parts of the
+Z-Machine (such as the dictionary); however, this:</p>
+
+<pre><code>print : Hello world
+</code></pre>
+
+<p>is arguably better than this:</p>
+
+<pre><code>0300 0001 FFFF 0010 0000 0000 0036 FFFF B211 AA46 3403 945E 2994 A5BB BA
+</code></pre>
+
+<p>It also allows for somewhat more complex programs, such as a recursive fibonacci program:</p>
+
+<pre><code>print : Please enter n to calculate fib(n): 
+call @read_int -&gt; $n 
+call @fib $n -&gt; $stack
+print : fib(
+print_num $n
+print : ) = 
+print_num $stack
+new_line
+quit
+
+METHOD fib n
+    jz n rfalse
+    je n 1 rtrue
+    sub n 1 -&gt; $stack
+    call @fib $stack -&gt; $stack
+    sub n 2 -&gt; $stack
+    call @fib $stack -&gt; $stack
+    add $stack $stack -&gt; $stack
+    ret_popped
+
+METHOD atoi table i=1 result char
+    .atoi_start loadb table i -&gt; char
+    jz char ?atoi_done
+    sub char 48 -&gt; $stack
+    mul result 10 -&gt; result
+    add result $stack -&gt; result
+    inc i
+    jump ?atoi_start
+    .atoi_done ret result
+
+METHOD read_int
+    sread *number_table *parse_table
+    call @atoi *number_table -&gt; $stack
+    ret_popped
+
+TABLE number_table 6
+TABLE parse_table 10
+</code></pre>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mattpf.net/projects/projectz/index.html" data-via="matthewpf" data-counturl="http://mattpf.net/projects/projectz/index.html" >Tweet</a>
+  
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/13/hello-world/">Hello, world!</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("matthewpf", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/matthewpf" class="twitter-follow-button" data-show-count="false">Follow @matthewpf</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Matthew Powers-Freeling -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mattpf';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mattpf.net/projects/projectz/index.html';
+        var disqus_url = 'http://mattpf.net/projects/projectz/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
