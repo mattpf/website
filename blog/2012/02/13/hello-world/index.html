@@ -124,7 +124,7 @@ frequently wise.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mattpf.net/blog/2012/02/13/hello-world/" data-via="" data-counturl="http://mattpf.net/blog/2012/02/13/hello-world/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mattpf.net/blog/2012/02/13/hello-world/" data-via="matthewpf" data-counturl="http://mattpf.net/blog/2012/02/13/hello-world/" >Tweet</a>
   
   
   
@@ -153,6 +153,22 @@ frequently wise.</p>
   </ul>
 </section>
 
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("matthewpf", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/matthewpf" class="twitter-follow-button" data-show-count="false">Follow @matthewpf</a>
+  
+</section>
 
 
 
