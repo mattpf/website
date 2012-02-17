@@ -4,7 +4,7 @@
   <title><![CDATA[mattpf]]></title>
   <link href="http://mattpf.net/atom.xml" rel="self"/>
   <link href="http://mattpf.net/"/>
-  <updated>2012-02-14T06:51:23-05:00</updated>
+  <updated>2012-02-17T14:52:23-05:00</updated>
   <id>http://mattpf.net/</id>
   <author>
     <name><![CDATA[Matthew Powers-Freeling]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A new project: SchedSim]]></title>
+    <link href="http://mattpf.net/blog/2012/02/17/starting-schedsim/"/>
+    <updated>2012-02-17T14:32:00-05:00</updated>
+    <id>http://mattpf.net/blog/2012/02/17/starting-schedsim</id>
+    <content type="html"><![CDATA[<p>I am now required (for a class) to create a <em>CPU scheduling simulator</em>. Which will be fun.</p>
+
+<p>For now I&#8217;m mostly contemplating how to implement… well… any of it, really. I&#8217;m sure it&#8217;ll
+be an interesting experience. All I have at the moment is a quick UI mockup I threw together
+for the sake of the &#8220;proposal&#8221; – which is something of a misnomer, since there wasn&#8217;t any
+real proposing going on, but oh well.</p>
+
+<p><img class="center" src="http://mattpf.net/images/blog/schedsim-mockup-1.png"></p>
+
+<p>I&#8217;m somewhat undecided on if I should expand those bars vertically to be somewhat more like
+the thing below, though I suspect the answer is probably &#8220;yes.&#8221;</p>
+
+<p><img class="center" src="http://mattpf.net/images/blog/hw2-rr-gantt.png"></p>
+
+<p>The whole user interface is probably weeks away at this point, though. We shall see!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello, world!]]></title>
