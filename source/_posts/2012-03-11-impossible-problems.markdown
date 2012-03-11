@@ -76,6 +76,14 @@ int SomeClass::countAllTheThings() {
 }
 ```
 
+This works because object has an implicit pointer to itself, `this`. Provided we know
+the method is called on the first (0th) element of the array, and that the size of the
+array is `MAX_ENTRIES`, we can use [pointer arithmetic][] to find references to every
+other member of the array. Thus, the solution is *valid*, but neither particularly
+elegant nor remotely reusable. Or sane, for that matter.
+
 An alternative, *possibly* neater solution might be to set a reference to `things` on
 the `SomeClass` instance itself, then call `countAllTheThings` with a reference to that.
 Not much better, though.
+
+[pointer arithmetic]: http://en.wikipedia.org/wiki/Pointer_(computer_programming)#C_and_C.2B.2B
