@@ -3,7 +3,7 @@ layout: post
 title: "A new project: SchedSim"
 date: 2012-02-17 14:32
 comments: true
-categories: 
+categories: Programming
 ---
 I am now required (for a class) to create a *CPU scheduling simulator*. Which will be fun.
 

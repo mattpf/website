@@ -3,7 +3,7 @@ layout: post
 title: "Hello, world!"
 date: 2012-02-13 17:26
 comments: true
-categories: 
+categories: Administrivia
 ---
 I decided it would probably be worth having some *actual content* up on this domain, so here is a blog!
 It's not a terribly exciting blog, but it is a blog none-the-less.
