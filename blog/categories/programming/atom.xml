@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | mattpf]]></title>
   <link href="http://mattpf.net/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://mattpf.net/"/>
-  <updated>2012-03-11T01:12:03-05:00</updated>
+  <updated>2012-03-11T01:14:28-05:00</updated>
   <id>http://mattpf.net/</id>
   <author>
     <name><![CDATA[Matthew Powers-Freeling]]></name>
@@ -113,7 +113,8 @@ return total;
 ```</p>
 
 <p>An alternative, <em>possibly</em> neater solution might be to set a reference to <code>things</code> on
-the <code>SomeClass</code> instance itself, then call countAllTheThings with a reference to that.</p>
+the <code>SomeClass</code> instance itself, then call <code>countAllTheThings</code> with a reference to that.
+Not much better, though.</p>
 ]]></content>
   </entry>
   
