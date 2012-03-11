@@ -205,6 +205,12 @@ that the problem, as specified, has <em>any</em> good solutions.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>This works because object has an implicit pointer to itself, <code>this</code>. Provided we know
+the method is called on the first (0th) element of the array, and that the size of the
+array is <code>MAX_ENTRIES</code>, we can use <a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)#C_and_C.2B.2B">pointer arithmetic</a> to find references to every
+other member of the array. Thus, the solution is <em>valid</em>, but neither particularly
+elegant nor remotely reusable. Or sane, for that matter.</p>
+
 <p>An alternative, <em>possibly</em> neater solution might be to set a reference to <code>things</code> on
 the <code>SomeClass</code> instance itself, then call <code>countAllTheThings</code> with a reference to that.
 Not much better, though.</p>
